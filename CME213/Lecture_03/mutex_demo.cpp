@@ -41,8 +41,8 @@ void PizzaDeliveryPronto(int thread_id)
 
         g_mutex.lock();
     }
-
-    g_mutex.unlock();
+    /* Explain what would happen if you remove line 45: g_mutex.unlock(); */
+    g_mutex.unlock(); // The other threads wouldn't break the loop if the current thread wasn't unlocked.
     return;
 }
 
