@@ -1,0 +1,26 @@
+Let's compute pi =		3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
+[info] Number of threads = 8
+Hello World from thread = 0
+Hello World from thread = 1
+Hello World from thread = 2
+Hello World from thread = 4
+Hello World from thread = 6
+Hello World from thread = 7
+Hello World from thread = 3
+Hello World from thread = 5
+Thread  1 approximated Pi as	 314159265358979323846264
+Thread  2 approximated Pi as	 31415926535897932384626433832795
+Thread  4 approximated Pi as	 314159265358979323846264338327950288419716939937
+Thread  7 approximated Pi as	 314159265358979323846264338327950288419716939937510582097494459230781640
+Thread  3 approximated Pi as	 3141592653589793238462643383279502884197
+Thread  0 approximated Pi as	 3141592653589793
+Thread  6 approximated Pi as	 3141592653589793238462643383279502884197169399375105820974944592
+Thread  5 approximated Pi as	 31415926535897932384626433832795028841971693993751058209
+Thread 0 computed 16 digits of pi in  1469 musecs (  91.812 musec per digit)
+Thread 1 computed 24 digits of pi in   974 musecs (  40.583 musec per digit)
+Thread 2 computed 32 digits of pi in  1107 musecs (  34.594 musec per digit)
+Thread 3 computed 40 digits of pi in   717 musecs (  17.925 musec per digit)
+Thread 4 computed 48 digits of pi in  1213 musecs (  25.271 musec per digit)
+Thread 5 computed 56 digits of pi in   940 musecs (  16.786 musec per digit)
+Thread 6 computed 64 digits of pi in  1243 musecs (  19.422 musec per digit)
+Thread 7 computed 72 digits of pi in  1293 musecs (  17.958 musec per digit)

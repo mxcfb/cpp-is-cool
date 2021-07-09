@@ -23,18 +23,23 @@ int main(int argc, char **argv)
     {
         // shared_int is shared
         int tid = omp_get_thread_num();
+        // shared_int = tid;
         printf("Thread ID %2d | shared_int = %d\n", tid, shared_int);
     }
 
+    // printf("Main thread | shared_int = %d\n", shared_int);
+
     int is_private = -2;
 
+    /* Explain what would happen if you remove private(is_private) on line 35. */
 #pragma omp parallel private(is_private)
     {
         int tid = omp_get_thread_num();
         int rand_tid = rand();
         is_private = rand_tid;
         printf("Thread ID %2d | is_private = %d\n", tid, is_private);
-        assert(is_private == rand_tid);
+        // assert(is_private == rand_tid);
+        printf("Thread ID %2d | is_private = %d | rand_tid = %d\n", tid, is_private, rand_tid);
     }
 
     printf("Main thread | is_private = %d\n", is_private);
