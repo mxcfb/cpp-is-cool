@@ -88,6 +88,7 @@ int main(int argc, char **argv)
 
     high_resolution_clock::time_point time_begin = high_resolution_clock::now();
 #pragma omp parallel for schedule(static) collapse(2)
+    // The (loop) collapse clause allows parallelization of "perfectly nested loops" without using nested parallelism.
     for (int i = 0; i < size; ++i)
         for (int j = 0; j < size; ++j)
         {
