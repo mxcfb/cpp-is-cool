@@ -1,10 +1,10 @@
 CPP := g++
 
 # macOS
-CPPFLAGS := -std=c++11 -Wall -O2 -I/usr/local/include -Xpreprocessor -fopenmp -L/usr/local/lib -lomp
+# CPPFLAGS := -std=c++11 -Wall -O2 -I/usr/local/include -Xpreprocessor -fopenmp -L/usr/local/lib -lomp
 
 # Linux
-# CPPFLAGS := -std=c++11 -Wall -O2 -fopenmp
+CPPFLAGS := -std=c++11 -Wall -O2 -fopenmp
 
 SRC := $(wildcard *.cpp)
 EXE := $(patsubst %.cpp,%,$(filter %.cpp,$(SRC)))

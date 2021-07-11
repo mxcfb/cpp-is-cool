@@ -38,7 +38,7 @@ void FillTree(int max_level, int level, Node *curr_node)
 void Visit(Node *curr_node)
 {
     /* do work here */
-    printf("Number of descendants = %d\n", curr_node->data);
+    printf("Thread = %d visited node | Number of descendants = %d\n", omp_get_thread_num(), curr_node->data);
 }
 
 // Sequential code
@@ -65,6 +65,8 @@ int PostOrderTraverse(struct Node *curr_node)
 #pragma omp task shared(left)
         left = PostOrderTraverse(curr_node->left);
     // Default attribute for task constructs is firstprivate
+    // private: Each thread has its own "local" copy of the variable. The copies of the variable in different threads are not initialized.
+    // firstprivate: Each thread has its own "local" copy of the variable. The copies of the variable in different threads are initialized to the value the variable had before entering the parallel region.
     if (curr_node->right)
 #pragma omp task shared(right)
         right = PostOrderTraverse(curr_node->right);

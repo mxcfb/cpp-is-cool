@@ -1,0 +1,22 @@
+Thread 0
+Thread 0
+Thread 0 visited node | data = 40
+Thread 2
+Thread 1
+Thread 3
+Thread 2 visited node | data = 26
+Thread 1 visited node | data = 72
+Thread 0 visited node | data = 36
+Thread 3 visited node | data = 11
+Thread 2 visited node | data = 68
+Thread 1 visited node | data = 67
+Thread 0 visited node | data = 29
+Thread 2 visited node | data = 82
+Thread 2 visited node | data = 30
+Thread 0 visited node | data = 62
+Thread 3 visited node | data = 23
+Thread 2 visited node | data = 67
+Thread 0 visited node | data = 35
+Thread 2 visited node | data = 29
+Thread 2 visited node | data = 2
+Thread 1 visited node | data = 22

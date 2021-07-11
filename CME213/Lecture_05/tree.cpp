@@ -39,7 +39,7 @@ void Visit(Node *curr_node)
 {
     /* do work here */
     curr_node->data = rand() % 100;
-    printf("data = %d\n", curr_node->data);
+    printf("Thread %d visited node | data = %d\n", omp_get_thread_num(), curr_node->data);
 }
 
 // Pre-order traversal
@@ -69,8 +69,10 @@ int main()
 
 #pragma omp parallel
     {
+        printf("Thread %d\n", omp_get_thread_num());
 #pragma omp single
         {
+            printf("Thread %d\n", omp_get_thread_num());
             // Only a single thread should execute this
             Traverse(root);
         }
