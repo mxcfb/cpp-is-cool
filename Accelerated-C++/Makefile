@@ -1,38 +1,31 @@
 # Makefile for Writing Make Files Example
- 
+
 # *****************************************************
 # Variables to control Makefile operation
- 
+
 CC = g++
-INCLUDE_DIR = ./include
-SOURCE_DIR = ./src
-CFLAGS = -Wall -g -I$(INCLUDE_DIR)
- 
+CFLAGS = -Wall -g -I$(INC_DIR)
+INC_DIR = include
+SRC_DIR = src
+INC_FILES = $(addprefix $(INC_DIR)/,Core.h Grad.h grade.h Student_info.h median.h Vec.h algorithm.h)
+SRC_FILES = $(addprefix $(SRC_DIR)/,$(OBJ_FILES:.o=.cpp))
+OBJ_FILES = main.o Core.o Grad.o grade.o Student_info.o
+
 # ****************************************************
 # Targets needed to bring the executable up to date
- 
-main: main.o Core.o Grad.o grade.o Student_info.o
-	echo "Building..."
-	$(CC) $(CFLAGS) -o main main.o Core.o Grad.o grade.o Student_info.o
- 
-# Dummy Makerules
- 
-main.o: $(SOURCE_DIR)/main.cpp $(INCLUDE_DIR)/Student_info.h $(INCLUDE_DIR)/Vec.h
-	$(CC) $(CFLAGS) -c $(SOURCE_DIR)/main.cpp
- 
-Student_info.o: $(SOURCE_DIR)/Student_info.cpp $(INCLUDE_DIR)/Student_info.h $(INCLUDE_DIR)/Core.h $(INCLUDE_DIR)/Grad.h $(INCLUDE_DIR)/grade.h $(INCLUDE_DIR)/Vec.h
-	$(CC) $(CFLAGS) -c $(SOURCE_DIR)/Student_info.cpp
 
-Core.o: $(SOURCE_DIR)/Core.cpp $(INCLUDE_DIR)/Core.h $(INCLUDE_DIR)/grade.h $(INCLUDE_DIR)/Vec.h
-	$(CC) $(CFLAGS) -c $(SOURCE_DIR)/Core.cpp
+main: $(OBJ_FILES)
+	@echo Header files: $(INC_FILES)
+	@echo Source files: $(SRC_FILES)
+	@echo Building the final executable...
+	$(CC) $(CFLAGS) -o $@ $^
 
-Grad.o: $(SOURCE_DIR)/Grad.cpp $(INCLUDE_DIR)/Core.h $(INCLUDE_DIR)/Grad.h $(INCLUDE_DIR)/grade.h $(INCLUDE_DIR)/Vec.h
-	$(CC) $(CFLAGS) -c $(SOURCE_DIR)/Grad.cpp 
+# Updated Makerules
 
-grade.o: $(SOURCE_DIR)/grade.cpp $(INCLUDE_DIR)/grade.h $(INCLUDE_DIR)/median.h $(INCLUDE_DIR)/Vec.h
-	$(CC) $(CFLAGS) -c $(SOURCE_DIR)/grade.cpp
+$(OBJ_FILES): %.o: $(SRC_DIR)/%.cpp $(INC_FILES)
+	$(CC) $(CFLAGS) -c $<
 
 .PHONY: clean
 
 clean:
-	rm -f main *.o *output.txt ./src/*.o
+	rm -f main *.o *output.txt $(SRC_DIR)/*.o
